@@ -1,0 +1,142 @@
+/* styles.css */
+@import url('https://fonts.googleapis.com/css2?family=Fuzzy+Bubbles:wght@400;700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Updock&display=swap');
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  header {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  button {
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+    padding: 20px;
+  }
+  
+  .card {
+    perspective: 1000px;
+  }
+  
+  .card-inner {
+    width: 100%;
+    height: 200px;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s;
+    cursor: pointer;
+  }
+  
+  .card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    text-align: center;
+  }
+
+  .card-back {
+    font-family: "Fuzzy Bubbles", sans-serif;
+    font-style: normal;
+    font-size: small;
+  }
+  
+  .card-front {
+    background-color: #f0f0f0;
+  }
+  
+  .card-back {
+    background-color: #4caf50;
+    color: white;
+    transform: rotateY(180deg);
+  }
+  
+  .hidden .card-back {
+    visibility: hidden;
+  }
+  
+  .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
+  .dark-mode {
+    background-color: #121212;
+    color: white;
+  }
+  
+  .dark-mode .card-front {
+    background-color: #1e1e1e;
+    border-color: #333;
+  }
+
+/* Estilo para el botón de modo oscuro con tema navideño */
+#themeToggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  background-color: var(--card-color);
+  border-radius: 50%;
+  border: 2px solid var(--text-color);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+#themeToggle:hover {
+  transform: scale(1.1);
+}
+
+/* Icono del botón: por defecto, gorro navideño */
+#themeToggle::before {
+  content: '🎅'; /* Gorro navideño */
+  font-size: 24px;
+  color: var(--text-color);
+  transition: color 0.3s ease;
+}
+
+/* Modo oscuro: cambia a estrella fugaz */
+body.dark-mode #themeToggle::before {
+  content: '🌠'; /* Estrella fugaz */
+}
